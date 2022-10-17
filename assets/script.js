@@ -16,3 +16,20 @@ const slides = [
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
+
+
+// EVENEMENT FLECHE CARROUSEL
+// 1° Je récupère les flèches
+let leftArrow = document.getElementsByClassName('arrow_left');
+let rightArrow = document.getElementsByClassName('arrow_right');
+
+// 2° J'ajoute l'événement
+
+leftArrow.addEventListener('click', ()=> {
+	// montre la photo précédente
+})
+
+rightArrow.addEventListener('click', ()=> {
+	// montre la photo suivante
+})
+
