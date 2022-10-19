@@ -14,22 +14,49 @@ const slides = [
 	{
 		"image":"slide4.png",
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
-	}
+	},
 ]
 
 
-// EVENEMENT FLECHE CARROUSEL
-// 1° Je récupère les flèches
-let leftArrow = document.getElementsByClassName('arrow_left');
-let rightArrow = document.getElementsByClassName('arrow_right');
+// // let dots = Array.from(dot.children);
 
-// 2° J'ajoute l'événement
+// EVENEMENT CARROUSEL
 
-leftArrow.addEventListener('click', ()=> {
-	// montre la photo précédente
+	// Je récupère les flèches :
+let leftArrow = document.querySelector('.arrow_left');
+let rightArrow = document.querySelector('.arrow_right');
+
+
+ 	// J'ajoute les événements :
+leftArrow.addEventListener('click', e => {
+
+	let prevDot = currentDot.previousElementSibling;
+
+	currentDot.classList.remove("dot_selected");
+	prevDot.classList.add("dot_selected");
+
 })
 
-rightArrow.addEventListener('click', ()=> {
-	// montre la photo suivante
+rightArrow.addEventListener('click', e => {
+
+	let nextDot = currentDot.nextElementSibling;
+
+	currentDot.classList.remove("dot_selected");
+	nextDot.classList.add("dot_selected");
+
 })
 
+
+	// J'insère les bullet points dynamiquement :
+let bulletPoints
+
+slides.forEach(function(slide){
+
+	bulletPoints = document.querySelector('.dots').innerHTML += `<div class="dot"></div>`;
+
+})
+
+
+	// Différencier le bullet point actuel des autres :
+let currentDot = document.querySelector('.dot')
+currentDot.classList.add("dot_selected")
