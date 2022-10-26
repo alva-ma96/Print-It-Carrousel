@@ -28,22 +28,19 @@ let rightArrow = document.querySelector('.arrow_right');
 
 
  	// J'ajoute les événements :
-leftArrow.addEventListener('click', e => {
-
-	let prevDot = currentDot.previousElementSibling;
-
-	currentDot.classList.remove("dot_selected");
-	prevDot.classList.add("dot_selected");
-
-})
-
-rightArrow.addEventListener('click', e => {
-
+rightArrow.addEventListener('click', () => {
 	let nextDot = currentDot.nextElementSibling;
-
 	currentDot.classList.remove("dot_selected");
 	nextDot.classList.add("dot_selected");
+	currentDot = nextDot
+console.log(currentDot);
+})
 
+leftArrow.addEventListener('click', () => {
+	let prevDot = currentDot.previousElementSibling;
+	currentDot.classList.remove("dot_selected");
+	prevDot.classList.add("dot_selected");
+	currentDot = prevDot
 })
 
 
@@ -60,3 +57,15 @@ slides.forEach(function(slide){
 	// Différencier le bullet point actuel des autres :
 let currentDot = document.querySelector('.dot')
 currentDot.classList.add("dot_selected")
+
+
+// 	// J'insère les photos dynamiquement :
+// let afficherImages = document.getElementById('banner')
+
+// 	slides.forEach(function(slide) {
+// 		afficherImages.innerHTML += `<img src="./assets/images/slideshow/${slides.image}">
+// 		<p>${slides.tagLine}</p>`
+// });
+
+// 	// Afficher une photo à la fois :
+// let hiddenImage = document.querySelector('')
