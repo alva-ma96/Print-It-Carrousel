@@ -18,54 +18,60 @@ const slides = [
 ]
 
 
-// // let dots = Array.from(dot.children);
-
-// EVENEMENT CARROUSEL
-
 	// Je récupère les flèches :
 let leftArrow = document.querySelector('.arrow_left');
 let rightArrow = document.querySelector('.arrow_right');
 
 
- 	// J'ajoute les événements :
-rightArrow.addEventListener('click', () => {
-	let nextDot = currentDot.nextElementSibling;
-	currentDot.classList.remove("dot_selected");
-	nextDot.classList.add("dot_selected");
-	currentDot = nextDot
-console.log(currentDot);
-})
-
-leftArrow.addEventListener('click', () => {
-	let prevDot = currentDot.previousElementSibling;
-	currentDot.classList.remove("dot_selected");
-	prevDot.classList.add("dot_selected");
-	currentDot = prevDot
-})
-
-
-	// J'insère les bullet points dynamiquement :
-let bulletPoints
-
+	// J'insère les bullet points dynamiquement avec une boucle:
 slides.forEach(function(slide){
-
-	bulletPoints = document.querySelector('.dots').innerHTML += `<div class="dot"></div>`;
-
+	
+	document.querySelector('.dots').innerHTML += `<div class="dot"></div>`;
+	
 })
 
-
-	// Différencier le bullet point actuel des autres :
+	
+	// Différencier le bullet point actuel des autres en lui ajoutant une classe :
 let currentDot = document.querySelector('.dot')
 currentDot.classList.add("dot_selected")
 
 
-// 	// J'insère les photos dynamiquement :
-// let afficherImages = document.getElementById('banner')
+ 	// J'ajoute les événements sur les flèches :
+let index = 0
 
-// 	slides.forEach(function(slide) {
-// 		afficherImages.innerHTML += `<img src="./assets/images/slideshow/${slides.image}">
-// 		<p>${slides.tagLine}</p>`
-// });
+//flèche droite
+rightArrow.addEventListener('click', () => {
 
-// 	// Afficher une photo à la fois :
-// let hiddenImage = document.querySelector('')
+	if (index > 3) {
+		index = 0
+		console.log(index);
+
+	}else{
+		let nextDot = currentDot.nextElementSibling;
+		currentDot.classList.remove("dot_selected");	
+		nextDot.classList.add("dot_selected");
+		currentDot = nextDot
+		index++
+		console.log(currentDot);
+	}
+
+	document.getElementById('bannerIMG').src=`./assets/images/slideshow/${slides[index].image}`
+	document.getElementById('bannerP').innerHTML=slides[index].tagLine
+	
+
+})
+
+//flèche gauche
+leftArrow.addEventListener('click', () => {
+
+	let prevDot = currentDot.previousElementSibling;
+	currentDot.classList.remove("dot_selected");
+	prevDot.classList.add("dot_selected");
+	currentDot = prevDot
+
+	index--
+	document.getElementById('bannerIMG').src=`./assets/images/slideshow/${slides[index].image}`
+	document.getElementById('bannerP').innerHTML=slides[index].tagLine
+
+	console.log(index);
+})
